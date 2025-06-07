@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -121,5 +122,14 @@ class HelloSpringDataJpaApplicationTests {
         productList.forEach(product -> logger.info("--> {}", product));
 
         assertEquals(6, productList.size(), "Expected 6 product containing 'Air'");
+    }
+
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Test
+    void generateHashedPassword() {
+        String pwd = encoder.encode("alicepw");
+        System.out.println(pwd);
     }
 }

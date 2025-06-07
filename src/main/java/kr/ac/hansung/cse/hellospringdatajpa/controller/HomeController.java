@@ -9,4 +9,9 @@ public class HomeController {
     public String redirectToProducts() {
         return "redirect:/products";
     }
+
+    @GetMapping("/user")
+    public String redirectToUsersProducts() {
+        return "redirect:/products/userindex";
+    }
 }

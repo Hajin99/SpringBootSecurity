@@ -25,6 +25,15 @@ public class ProductController {
         return "index";
     }
 
+    @GetMapping({"/userindex", "/userindex/"}) // products 또는 /products/ 둘 다 매핑
+    public String viewUserHomePage(Model model) {
+
+        List<Product> listProducts = service.listAll();
+        model.addAttribute("listProducts", listProducts);
+
+        return "userindex";
+    }
+
     @GetMapping("/new")
     public String showNewProductPage(Model model) {
 
